@@ -5,8 +5,6 @@ import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
-const delay = (ms) => new Promise((r) => setTimeout(r, ms));
-
 const validationSchema = yup.object({
   email: yup
     .string("Enter your email")
@@ -18,7 +16,7 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-export const WithMaterialFormik = () => {
+export const LoginForm = () => {
 
   const formik = useFormik({
     initialValues: {
