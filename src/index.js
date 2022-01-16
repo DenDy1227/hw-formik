@@ -1,10 +1,11 @@
 import ReactDOM from 'react-dom';
 
-import { AppExample } from './FormExample';
+
+import { App } from './tabsForm';
 
 
 
 ReactDOM.render(
-    <AppExample />,
+    <App />,
   document.getElementById('root')
 );

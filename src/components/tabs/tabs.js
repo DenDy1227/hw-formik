@@ -4,8 +4,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { WithMaterialFormik } from '../examples/formik/example3';
-import { Registration } from '../examples/Registration/Registration';
+import { WithMaterialFormik } from '../signUpForm/formik/signUpForm'
+import { Registration } from '../signUpForm/Registration/Registration';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

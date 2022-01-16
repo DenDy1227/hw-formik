@@ -19,10 +19,7 @@ import {
 } from "@mui/material";
 
 // Custom Styling
-import { styles, styleWrapper } from "./RegistrationStyles";
-
-// import { delay } from "../../utils/delay";       await delay(800);
-// import { validationSchema } from "../../utils/schema";
+// import { styles, styleWrapper } from "./RegistrationStyles";
 
 const validationSchema = yup.object({
   name: yup
@@ -57,9 +54,7 @@ export const Registration = () => {
   });
 
   return (
-    <div style={styleWrapper}>
-      <Typography variant="h3">Registration Form</Typography>
-
+    <div >
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
@@ -93,59 +88,6 @@ export const Registration = () => {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
         />
-
-        <FormControlLabel
-          control={<Checkbox />}
-          label="Under 12 years old"
-          id="adult"
-          name="adult"
-          id="adult"
-          type="checkbox"
-          value={formik.values.adult}
-          onChange={formik.handleChange}
-        />
-
-        <FormLabel
-          component="legend"
-          error={formik.touched.role && Boolean(formik.errors.role)}
-          helperText={formik.touched.role && formik.errors.role}
-        >
-          Role
-        </FormLabel>
-
-        <RadioGroup
-          aria-label="role"
-          //   defaultValue="admin"
-          name="role"
-          onChange={formik.handleChange}
-        >
-          <FormControlLabel value="admin" control={<Radio />} label="Admin" />
-          <FormControlLabel value="owner" control={<Radio />} label="Owner" />
-          <FormControlLabel value="manager" control={<Radio />} label="Manager" />
-        </RadioGroup>
-        
-        <p style={{ color: "red" }}> {formik.errors.role}</p>
-
-        <div>Gender</div>
-        <Select
-          id="gender-label-select"
-          name="gender"
-          style={{ width: 150 }}
-          value={formik.values.gender}
-          onChange={formik.handleChange}
-          autoWidth
-        >
-          <MenuItem value={"female"} style={styles}>
-            Female
-          </MenuItem>
-          <MenuItem value={"male"} style={styles}>
-            Male
-          </MenuItem>
-          <MenuItem value={"other"} style={styles}>
-            Other
-          </MenuItem>
-        </Select>
-
         <Button
           color="primary"
           disabled={formik.isSubmitting}
