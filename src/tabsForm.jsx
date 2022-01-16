@@ -1,12 +1,9 @@
 
 // Instruments
-import BasicTabs from './components/tabs/tabs';
-
-import SimpleContainer from './components/box/box';
-
+import BasicTabs from './components/tabs/tabPanel';
 export function App() {
 
-    return <>
-                <SimpleContainer/>     
-    </>
+    return <div className='wrapper'>    
+            <BasicTabs/>            
+        </div>
 }

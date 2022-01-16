@@ -7,19 +7,8 @@ import * as yup from "yup";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import {
-  Typography,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  Checkbox,
-  MenuItem,
-  Select,
-  FormLabel,
-} from "@mui/material";
 
-// Custom Styling
-// import { styles, styleWrapper } from "./RegistrationStyles";
+
 
 const validationSchema = yup.object({
   name: yup
