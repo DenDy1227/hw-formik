@@ -5,38 +5,31 @@ import { useEffect, useState } from 'react';
 import { CardNumbers } from '../cardNumberList/cardNumberLisr';
 
 export const ToDoList =() => {
-     const [toDoList,setToDoList] = useState([])
-  
-    
-  
-  const [value,setValue] = useState('')
-  const [serch,setSearch] = useState('')
-  const [save,setSave] = useState('')
-  //   const handlerValueChange = (e) => setValue(e.target.value);
-    
-  //       // setValue((prevState) => [...prevState,data])
-
+     
+  const [toDoList,setToDoList] = useState([])
+     const [value,setValue] = useState('')
+     const [serch,setSearch] = useState('')
+     const [save,setSave] = useState('')
+ 
      const onSave = (event) =>{
-      event.preventDefault();
-      setSearch(toDoList);
-      if (toDoList.some((e) => e.phoneNum == value)){
-        return console.log('errrrr');
-    } else {
-    
-      const data ={
-        phoneNum:value,
-        id:value,
-        complited:false,
+        event.preventDefault();
+        setSearch(toDoList)
+        setValue('')
+            if (toDoList.some((e) => e.phoneNum == value)){
+              return console.log('errrrr');
+          } else {
+      
+        const data ={
+          phoneNum:value,
+          id:value,
+          complited:false,         
+        }  
         
-      }
-      return setToDoList([...toDoList,data ])
-      console.log(toDoList)
-      setValue('')
+      return setToDoList([...toDoList,data ])     
     }
   }
 
-    const handleOnChange = (event) => {
-      
+    const handleOnChange = (event) => {      
       setValue(event.target.value)
       }
     
@@ -48,28 +41,58 @@ export const ToDoList =() => {
     const saveSearch =(input) => {
       setSave(input.target.value)
     }
-      const serchElem = (element) => {
+    const visibleTodos = toDoList.filter(item =>item.phoneNum.includes(save))
+    const serchElem = () => {
         console.log(serch,save);
         
           if (!save){setToDoList(serch)
+            console.log('save');
           } else{
-        const filtredElements =toDoList.filter((filtr) => filtr.id = save )
-        setToDoList(filtredElements)
+        
+        setToDoList(visibleTodos)
           }
       }
     return(
-        <>
-        
-      
-      <TextField  type='text' label='Search...' onChange={saveSearch}/>
-      <TextField type='phone' required inputProps={{ inputMode: 'numeric', pattern: '[0-9]' }}
-       required  label="Add phoneNumber" variant="filled"  onChange={handleOnChange} />
+        <>     
+          <TextField  
+          type='number' 
+          label='Search...' 
+          onChange={saveSearch} 
+          onInput = {(e) =>{
+          e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,12)
+      }}/>
+          <TextField type='number' 
+          required
+          onInput = {(e) =>{
+          e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,12)
+      }}
+          required  
+          label="Add phoneNumber" 
+          variant="filled" 
+          value={value} 
+          onChange={handleOnChange} />
       <br/>
-      <Button type='outlined' size='medium' color='success' onClick={serchElem} >Search</Button>
-      <Button type='outlined' size='medium' color='success' onClick={onSave} >Save</Button>
+           <Button 
+           type='contained' 
+           size='medium' 
+           color='success' 
+           onClick={serchElem} >
+             Search
+             </Button>
+           <Button 
+           type='contained' 
+           size='medium' 
+           color='success' 
+           onClick={onSave} >
+             Save
+             </Button>
           <ul>
             {
-             toDoList && toDoList.map( item =>  <CardNumbers key={item.id} todos={item} onDelete={onDelete}/>)
+             toDoList && toDoList.map( item =>  
+             <CardNumbers 
+             key={item.id} 
+             todos={item} 
+             onDelete={onDelete}/>)
             }
           </ul>
     </>
