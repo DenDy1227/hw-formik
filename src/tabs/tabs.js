@@ -4,8 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { WithMaterialFormik } from '../examples/formik/example3';
 import { Registration } from '../examples/Registration/Registration';
-import {WithMaterialFormik} from '../examples/formik/example3'
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -52,14 +53,14 @@ export default function BasicTabs() {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Sign in" {...a11yProps(0)} />
           <Tab label="Log in" {...a11yProps(1)} />
-        
+          
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Registration/>
+        <WithMaterialFormik/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <WithMaterialFormik/>
+        <Registration/>
       </TabPanel>
       
     </Box>

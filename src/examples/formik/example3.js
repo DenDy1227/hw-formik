@@ -1,18 +1,18 @@
 import React from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as yup from "yup";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const validationSchema = Yup.object({
-  email: Yup
+const validationSchema = yup.object({
+  email: yup
     .string("Enter your email")
     .email("Enter a valid email")
     .required("Email is required"),
-  password: Yup
+  password: yup
     .string("Enter your password")
     .min(8, "Password should be of minimum 8 characters length")
     .required("Password is required"),
@@ -25,7 +25,7 @@ export const WithMaterialFormik = () => {
       password: '',
       email: '',
     },
-    validationSchema: validationSchema,
+     validationSchema: validationSchema,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
     },
@@ -57,7 +57,7 @@ export const WithMaterialFormik = () => {
           helperText={formik.touched.password && formik.errors.password}
         />
         <Button
-          color="secondary"
+          color="primary"
           disabled={formik.isSubmitting}
           variant="contained"
           fullWidth
